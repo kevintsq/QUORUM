@@ -24,8 +24,8 @@ slam:
   radseg_slide_crop: 336
   radseg_slide_stride: 224
   radseg_lang_align: True
-  pca_dim: null
-  pca_state_path: "/home/user/km-vipe/vipe_results/vipe/pca_basis.pt"
+  pca_dim: 256
+  pca_state_path: "/home/user/km-vipe/replica_results/vipe/pca_basis.pt"
 
 
 # Post-processing configs
@@ -43,6 +43,6 @@ output:
   save_slam_map: true
 
   # Visualization videos to BASE_PATH/vipe/xxx.mp4
-  save_viz: false
+  save_viz: true
   viz_downsample: 2
-  viz_attributes: [['rgb', 'instance'], ['depth', 'pcd']]
+  viz_attributes: [['rgb', 'embedding'], ['depth', 'pcd']]

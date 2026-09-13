@@ -2,7 +2,7 @@ services:
   vipe:
     build:
       context: ./
-      dockerfile: ./docker/Dockerfile_TRT
+      dockerfile: ./docker/Dockerfile
     image: vipe:latest
     restart: unless-stopped
     network_mode: host
@@ -28,5 +28,5 @@ services:
         reservations:
           devices:
             - driver: nvidia
-              device_ids: ['1']       # <-- pin to GPU 1
+              device_ids: ['0']       # <-- pin to GPU 1
               capabilities: [gpu]

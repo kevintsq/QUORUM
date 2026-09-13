@@ -182,7 +182,7 @@ class RADSegEncoder(ImageSemSegEncoder):
                                 version=model_version, progress=True,
                                 skip_validation=True,
                                 adaptor_names=adaptor_names,
-                                force_reload=False)
+                                verbose=False)
     self.model.eval()
     self.model = self.model.to(self.device)
     # Steal adaptors from RADIO so it does not auto compute adaptor output.
