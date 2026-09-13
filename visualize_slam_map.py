@@ -16,6 +16,9 @@ import numpy as np
 import rerun as rr
 import torch
 
+# rerun-sdk >= 0.23 renamed Scalar -> Scalars (and later removed Scalar).
+Scalar = getattr(rr, "Scalars", None) or rr.Scalar
+
 
 def _resolve_device(device: str | torch.device) -> torch.device:
     """Normalize device inputs to torch.device."""
@@ -244,13 +247,13 @@ def visualize_slam_map(map_path: Path, device: str = "cpu", pca_basis_path: Path
 
         rr.log("stats/embedding_dim", rr.TextLog(f"{source} embedding dimension: {emb_dim}"))
         rr.log("stats/embedding_source", rr.TextLog(f"Embedding source: {source}"))
-        rr.log("stats/embedding_mean", rr.Scalar(emb_mean))
-        rr.log("stats/embedding_std", rr.Scalar(emb_std))
+        rr.log("stats/embedding_mean", Scalar(emb_mean))
+        rr.log("stats/embedding_std", Scalar(emb_std))
     else:
         print("No embeddings found in the map.")
 
     # Log metadata
-    rr.log("stats/total_points", rr.Scalar(xyz.shape[0]))
+    rr.log("stats/total_points", Scalar(xyz.shape[0]))
     rr.log("stats/map_path", rr.TextLog(str(map_path)))
 
     # Compute and log bounding box
